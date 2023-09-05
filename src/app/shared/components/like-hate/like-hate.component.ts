@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LikeHate } from 'src/app/models/like-hate';
 
 @Component({
@@ -7,14 +7,17 @@ import { LikeHate } from 'src/app/models/like-hate';
   styleUrls: ['./like-hate.component.scss'],
 })
 export class LikeHateComponent {
-  @Output() score: EventEmitter<LikeHate> = new EventEmitter<LikeHate>();
+
+
+  @Input() currentScore: number = 0;
+  @Output() scoreChange: EventEmitter<LikeHate> = new EventEmitter<LikeHate>();
 
   addScore() {
-    this.score.emit(LikeHate.LIKE)
+    this.scoreChange.emit(LikeHate.LIKE)
   }
 
   removeScore() {
-    this.score.emit(LikeHate.HATE)
+    this.scoreChange.emit(LikeHate.HATE)
   }
-  
+
 }

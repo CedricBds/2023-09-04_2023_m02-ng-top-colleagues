@@ -2,8 +2,8 @@
     <div class="border border-slate-500 w-fit flex items-center flex-col mt-10">
         <img src="https://imgs.search.brave.com/zBC2y2HCBRAsggmj2ReQzSpvDbo1WcMqjXZytYEGCEw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTU0/OTQ4NDQ5L2ZyL3Bo/b3RvL2JsYW5jLWxh/bWEtZW4tYXJnZW50/aW5lLWVuLWFtJUMz/JUE5cmlxdWUtZHUt/c3VkLWRlLWxhLXBy/b3ZpbmNlLWRlLXNh/bHRhLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1pZV9jYTlE/YUR4RkQ4a0Y2ZWtU/LXFGQVROc0FnX3Jl/SEhpaEN5dHZaZnRN/PQ" alt="">
         <p class="text-xl font-chivo">{{colleague?.pseudo}}</p>
-        <p>+ {{colleague?.score}}</p>
-        <tc-like-hate class="my-10 font-chivo"></tc-like-hate>
+        <p><span *ngIf="colleague.score > 0">+</span>{{colleague?.score}}</p>
+        <tc-like-hate (scoreChange)="onScoreChange($event)" class="my-10 font-chivo" [currentScore]="colleague.score"></tc-like-hate>
     </div>
 
 
