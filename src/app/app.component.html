@@ -2,14 +2,7 @@
 
   <h1 class="text-3xl font-bold text-orange-500 underline">
   TopColleagues</h1>
-  <section class="grid grid-cols-3 gap-2">
-
-    <section *ngFor="let currentColleague of colleagueArray">
-      <tc-colleague [colleague]="currentColleague"></tc-colleague>
-    </section>
-
-
-  </section>
+    <tc-colleague-list [colleagues]="colleagueArray" class="grid grid-cols-3 gap-5"></tc-colleague-list>
 
 
   </main>
