@@ -9,7 +9,7 @@ import { VotingHistoryComponent } from '../shared/components/voting-history/voti
 @NgModule({
   declarations: [LikeHateComponent, ColleagueComponent, ColleagueListComponent, ScorePipe, VotingHistoryComponent],
   imports: [CommonModule],
-  exports: [LikeHateComponent, ColleagueComponent, ColleagueListComponent],
+  exports: [LikeHateComponent, ColleagueComponent, ColleagueListComponent, VotingHistoryComponent],
 })
 export class SharedModule {
   
