@@ -4,7 +4,7 @@ name: Deploy To GitHub Pages
 on:
   push:
     branches:
-      - 'main'
+      - "main"
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
       - name: Use Node 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: "16.x"
 
       - name: Install dependencies
         run: npm install
@@ -27,7 +27,7 @@ jobs:
         run: npm run build
 
       - name: Generate 404.html file
-        run: cp dist/2023-09-04_2023_m02-ng-top-colleagues/index.html dist/top-colleagues/404.html
+        run: cp dist/top-colleagues/index.html dist/top-colleagues/404.html
 
       - name: Archive build
         if: success()
