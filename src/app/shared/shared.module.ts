@@ -8,4 +8,6 @@ import { ColleagueComponent } from '../shared/components/colleague/colleague.com
   imports: [CommonModule],
   exports: [LikeHateComponent, ColleagueComponent],
 })
-export class SharedModule {}
+export class SharedModule {
+  
+}

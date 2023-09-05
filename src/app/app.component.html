@@ -4,13 +4,10 @@
   TopColleagues</h1>
   <section class="grid grid-cols-3 gap-2">
 
-    <tc-colleague></tc-colleague>
-    <tc-colleague></tc-colleague>
-    <tc-colleague></tc-colleague>
-    <tc-colleague></tc-colleague>
-    <tc-colleague></tc-colleague>
-    <tc-colleague></tc-colleague>
-    <tc-colleague></tc-colleague>
+    <section *ngFor="let currentColleague of colleagueArray">
+      <tc-colleague [colleague]="currentColleague"></tc-colleague>
+    </section>
+
 
   </section>
 
