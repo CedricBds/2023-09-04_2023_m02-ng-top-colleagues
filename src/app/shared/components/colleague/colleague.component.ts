@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Colleague } from 'src/app/models/colleague';
 import { LikeHate } from 'src/app/models/like-hate';
 import { Vote } from 'src/app/models/vote';
+import { SharedModule } from '../../shared.module';
 
 @Component({
   selector: 'tc-colleague',
@@ -9,33 +10,32 @@ import { Vote } from 'src/app/models/vote';
   styleUrls: ['./colleague.component.scss'],
 })
 export class ColleagueComponent {
-  @Output() votingHistoryAdd: EventEmitter<Vote> = new EventEmitter<Vote>();
+  constructor(private sharedModule: SharedModule) {}
+
   @Input() colleague: Colleague = {
     pseudo: 'Cedric',
     score: 0,
     photo: '',
   };
 
-  ngOnInit() {
-    console.log(this.colleague);
-  }
+  ngOnInit() {}
 
   onScoreChange(event: any) {
-    console.log(event);
+    let currentColleague = this.colleague;
     switch (event) {
       case 0: // score up
         this.colleague.score += 300;
-        this.votingHistoryAdd.emit({
+        this.sharedModule.emitVoteHistoryEvent({
           vote: LikeHate.LIKE,
-          colleague: this.colleague,
-        });
+          colleague: currentColleague,
+        })
         break;
       case 1: //score down
         this.colleague.score -= 300;
-        this.votingHistoryAdd.emit({
+        this.sharedModule.emitVoteHistoryEvent({
           vote: LikeHate.HATE,
-          colleague: this.colleague,
-        });
+          colleague: currentColleague,
+        })
         break;
       default:
         //on fait cracher une exception?

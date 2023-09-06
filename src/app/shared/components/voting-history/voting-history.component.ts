@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Vote } from 'src/app/models/vote';
 
 @Component({
   selector: 'tc-voting-history',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./voting-history.component.scss'],
 })
 export class VotingHistoryComponent {
+  @Input() history: Vote[] | undefined;
+
 }

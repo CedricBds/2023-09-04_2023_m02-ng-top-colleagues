@@ -1,1 +1,7 @@
-<p>voting-history works!</p>
+<section class="border border-black mx-2">
+    <div class="border border-black px-5 py-1">
+        <p>Historique</p>
+    </div>
+
+    <div *ngFor="let entry of history">{{entry.colleague.pseudo | uppercase}} {{entry.vote | scoreHistory}} son score est maintenant de {{entry.colleague.score | score}}</div>
+</section>

@@ -5,12 +5,35 @@ import { ColleagueComponent } from '../shared/components/colleague/colleague.com
 import { ColleagueListComponent } from '../shared/components/colleague-list/colleague-list.component';
 import { ScorePipe } from '../shared/pipes/score.pipe';
 import { VotingHistoryComponent } from '../shared/components/voting-history/voting-history.component';
+import { Subject } from 'rxjs';
+import { Vote } from '../models/vote';
+import { ScoreHistoryPipe } from '../shared/pipes/score-history.pipe';
 
 @NgModule({
-  declarations: [LikeHateComponent, ColleagueComponent, ColleagueListComponent, ScorePipe, VotingHistoryComponent],
+  declarations: [
+    LikeHateComponent,
+    ColleagueComponent,
+    ColleagueListComponent,
+    ScorePipe,
+    VotingHistoryComponent,
+    ScoreHistoryPipe,
+  ],
   imports: [CommonModule],
-  exports: [LikeHateComponent, ColleagueComponent, ColleagueListComponent, VotingHistoryComponent],
+  exports: [
+    LikeHateComponent,
+    ColleagueComponent,
+    ColleagueListComponent,
+    VotingHistoryComponent,
+  ],
 })
 export class SharedModule {
-  
+  private voteHistoryEmitter = new Subject<any>();
+
+  emitVoteHistoryEvent(vote: Vote) {
+    this.voteHistoryEmitter.next(vote);
+  }
+
+  getVoteHistoryEvents(){
+    return this.voteHistoryEmitter.asObservable();
+  }
 }

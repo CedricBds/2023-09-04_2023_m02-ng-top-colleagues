@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { SharedModule } from './shared/shared.module';
+import { Vote } from './models/vote';
 
 @Component({
   selector: 'tc-root',
@@ -6,6 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  constructor(private sharedModule: SharedModule) {}
+
+  @Output() votingHistoryAdd: EventEmitter<Vote> = new EventEmitter<Vote>();
+
   title = 'top-colleagues';
   colleagueArray = [
     {
@@ -40,8 +46,11 @@ export class AppComponent {
         'https://imgs.search.brave.com/zBC2y2HCBRAsggmj2ReQzSpvDbo1WcMqjXZytYEGCEw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTU0/OTQ4NDQ5L2ZyL3Bo/b3RvL2JsYW5jLWxh/bWEtZW4tYXJnZW50/aW5lLWVuLWFtJUMz/JUE5cmlxdWUtZHUt/c3VkLWRlLWxhLXBy/b3ZpbmNlLWRlLXNh/bHRhLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1pZV9jYTlE/YUR4RkQ4a0Y2ZWtU/LXFGQVROc0FnX3Jl/SEhpaEN5dHZaZnRN/PQ',
     },
   ];
-  voteHistory = [];
+  votingHistory: Vote[] = [];
 
-  handleVoteAdd() {}
-
+  ngOnInit() {
+    this.sharedModule.getVoteHistoryEvents().subscribe((vote: Vote) => {
+     this.votingHistory?.push(vote)
+    })
+  }
 }

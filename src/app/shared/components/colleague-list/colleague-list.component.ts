@@ -7,5 +7,5 @@ import { Colleague } from 'src/app/models/colleague';
   styleUrls: ['./colleague-list.component.scss']
 })
 export class ColleagueListComponent {
- @Input() colleagues!: Colleague[];
+ @Input() colleagues: Colleague[] | undefined;
 }

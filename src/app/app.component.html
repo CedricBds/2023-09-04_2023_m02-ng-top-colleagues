@@ -5,5 +5,5 @@
 
     <tc-colleague-list [colleagues]="colleagueArray" class="grid grid-cols-3 gap-5"></tc-colleague-list>
 
-    <tc-voting-history (onVoteAdd)="handleVoteAdd()"></tc-voting-history>
+    <tc-voting-history [history]="votingHistory"></tc-voting-history>
   </main>
