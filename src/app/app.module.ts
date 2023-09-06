@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { WelcomeModule } from './pages/welcome/welcome.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,10 @@ import { CommonModule } from '@angular/common';
   imports: [
     BrowserModule,
     SharedModule,
-    CommonModule
+    CommonModule,
+    WelcomeModule
   ],
   providers: [],
-  bootstrap: [AppComponent, SharedModule]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

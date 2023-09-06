@@ -1,0 +1,56 @@
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Vote } from 'src/app/models/vote';
+import { SharedModule } from 'src/app/shared/shared.module';
+
+@Component({
+  selector: 'tc-welcome',
+  templateUrl: './welcome.page.html',
+  styleUrls: ['./welcome.page.scss']
+})
+export class WelcomePage {
+  constructor(private sharedModule: SharedModule) {}
+
+  @Output() votingHistoryAdd: EventEmitter<Vote> = new EventEmitter<Vote>();
+
+  title = 'top-colleagues';
+  colleagueArray = [
+    {
+      pseudo: 'Cedric',
+      score: -9999,
+      photo:
+        'https://imgs.search.brave.com/zBC2y2HCBRAsggmj2ReQzSpvDbo1WcMqjXZytYEGCEw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTU0/OTQ4NDQ5L2ZyL3Bo/b3RvL2JsYW5jLWxh/bWEtZW4tYXJnZW50/aW5lLWVuLWFtJUMz/JUE5cmlxdWUtZHUt/c3VkLWRlLWxhLXBy/b3ZpbmNlLWRlLXNh/bHRhLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1pZV9jYTlE/YUR4RkQ4a0Y2ZWtU/LXFGQVROc0FnX3Jl/SEhpaEN5dHZaZnRN/PQ',
+    },
+    {
+      pseudo: 'mattéo',
+      score: 10000,
+      photo:
+        'https://imgs.search.brave.com/zBC2y2HCBRAsggmj2ReQzSpvDbo1WcMqjXZytYEGCEw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTU0/OTQ4NDQ5L2ZyL3Bo/b3RvL2JsYW5jLWxh/bWEtZW4tYXJnZW50/aW5lLWVuLWFtJUMz/JUE5cmlxdWUtZHUt/c3VkLWRlLWxhLXBy/b3ZpbmNlLWRlLXNh/bHRhLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1pZV9jYTlE/YUR4RkQ4a0Y2ZWtU/LXFGQVROc0FnX3Jl/SEhpaEN5dHZaZnRN/PQ',
+    },
+    {
+      pseudo: 'Thomas',
+      score: 10000,
+      photo:
+        'https://imgs.search.brave.com/zBC2y2HCBRAsggmj2ReQzSpvDbo1WcMqjXZytYEGCEw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTU0/OTQ4NDQ5L2ZyL3Bo/b3RvL2JsYW5jLWxh/bWEtZW4tYXJnZW50/aW5lLWVuLWFtJUMz/JUE5cmlxdWUtZHUt/c3VkLWRlLWxhLXBy/b3ZpbmNlLWRlLXNh/bHRhLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1pZV9jYTlE/YUR4RkQ4a0Y2ZWtU/LXFGQVROc0FnX3Jl/SEhpaEN5dHZaZnRN/PQ',
+    },
+
+    {
+      pseudo: 'Victor',
+      score: 10000,
+      photo:
+        'https://imgs.search.brave.com/zBC2y2HCBRAsggmj2ReQzSpvDbo1WcMqjXZytYEGCEw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTU0/OTQ4NDQ5L2ZyL3Bo/b3RvL2JsYW5jLWxh/bWEtZW4tYXJnZW50/aW5lLWVuLWFtJUMz/JUE5cmlxdWUtZHUt/c3VkLWRlLWxhLXBy/b3ZpbmNlLWRlLXNh/bHRhLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1pZV9jYTlE/YUR4RkQ4a0Y2ZWtU/LXFGQVROc0FnX3Jl/SEhpaEN5dHZaZnRN/PQ',
+    },
+    {
+      pseudo: 'Moula',
+      score: 10000,
+      photo:
+        'https://imgs.search.brave.com/zBC2y2HCBRAsggmj2ReQzSpvDbo1WcMqjXZytYEGCEw/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTU0/OTQ4NDQ5L2ZyL3Bo/b3RvL2JsYW5jLWxh/bWEtZW4tYXJnZW50/aW5lLWVuLWFtJUMz/JUE5cmlxdWUtZHUt/c3VkLWRlLWxhLXBy/b3ZpbmNlLWRlLXNh/bHRhLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1pZV9jYTlE/YUR4RkQ4a0Y2ZWtU/LXFGQVROc0FnX3Jl/SEhpaEN5dHZaZnRN/PQ',
+    },
+  ];
+  votingHistory: Vote[] = [];
+
+  ngOnInit() {
+    this.sharedModule.getVoteHistoryEvents().subscribe((vote: Vote) => {
+     this.votingHistory?.push(vote)
+    })
+  }
+}
