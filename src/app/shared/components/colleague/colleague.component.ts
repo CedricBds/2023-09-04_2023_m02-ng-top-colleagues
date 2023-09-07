@@ -3,6 +3,7 @@ import { Colleague } from 'src/app/models/colleague';
 import { LikeHate } from 'src/app/models/like-hate';
 import { Vote } from 'src/app/models/vote';
 import { SharedModule } from '../../shared.module';
+import { VoteService } from 'src/app/providers/vote.service';
 
 @Component({
   selector: 'tc-colleague',
@@ -10,7 +11,7 @@ import { SharedModule } from '../../shared.module';
   styleUrls: ['./colleague.component.scss'],
 })
 export class ColleagueComponent {
-  constructor(private sharedModule: SharedModule) {}
+  constructor(private voteService: VoteService) {}
 
   @Input() colleague: Colleague = {
     pseudo: 'Cedric',
@@ -25,14 +26,14 @@ export class ColleagueComponent {
     switch (event) {
       case 0: // score up
         this.colleague.score += 300;
-        this.sharedModule.emitVoteHistoryEvent({
+        this.voteService.emitVoteHistoryEvent({
           vote: LikeHate.LIKE,
           colleague: currentColleague,
         })
         break;
       case 1: //score down
         this.colleague.score -= 300;
-        this.sharedModule.emitVoteHistoryEvent({
+        this.voteService.emitVoteHistoryEvent({
           vote: LikeHate.HATE,
           colleague: currentColleague,
         })

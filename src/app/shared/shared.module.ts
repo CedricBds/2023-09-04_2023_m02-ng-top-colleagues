@@ -27,13 +27,5 @@ import { ScoreHistoryPipe } from '../shared/pipes/score-history.pipe';
   ],
 })
 export class SharedModule {
-  private voteHistoryEmitter = new Subject<any>();
 
-  emitVoteHistoryEvent(vote: Vote) {
-    this.voteHistoryEmitter.next(vote);
-  }
-
-  getVoteHistoryEvents(){
-    return this.voteHistoryEmitter.asObservable();
-  }
 }

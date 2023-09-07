@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Vote } from 'src/app/models/vote';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { VoteService } from 'src/app/providers/vote.service';
 
 @Component({
   selector: 'tc-welcome',
@@ -8,7 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   styleUrls: ['./welcome.page.scss']
 })
 export class WelcomePage {
-  constructor(private sharedModule: SharedModule) {}
+  constructor(private voteService: VoteService) {}
 
   @Output() votingHistoryAdd: EventEmitter<Vote> = new EventEmitter<Vote>();
 
@@ -17,7 +17,7 @@ export class WelcomePage {
   votingHistory: Vote[] = [];
 
   ngOnInit() {
-    this.sharedModule.getVoteHistoryEvents().subscribe((vote: Vote) => {
+    this.voteService.getVoteHistoryEvents().subscribe((vote: Vote) => {
      this.votingHistory?.push(vote)
     })
   }
