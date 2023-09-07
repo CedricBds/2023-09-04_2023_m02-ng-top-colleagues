@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import { Vote } from '../models/vote';
 import { ScoreHistoryPipe } from '../shared/pipes/score-history.pipe';
 import { CounterComponent } from '../shared/components/counter/counter.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { CounterComponent } from '../shared/components/counter/counter.component
     ScoreHistoryPipe,
     CounterComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   exports: [
     LikeHateComponent,
     ColleagueComponent,

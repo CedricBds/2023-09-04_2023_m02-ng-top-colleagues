@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Colleague } from 'src/app/models/colleague';
 import { ColleagueService } from 'src/app/providers/colleague.service';
 
@@ -8,9 +9,12 @@ import { ColleagueService } from 'src/app/providers/colleague.service';
   styleUrls: ['./colleague-list.component.scss'],
 })
 export class ColleagueListComponent {
-  colleagues: Colleague[] | undefined;
+ constructor(private colleagueService: ColleagueService){}
+
+  colleagues$: Observable<Colleague[]> | undefined;
 
   ngOnInit() {
-    this.colleagues = ColleagueService.list();
+    this.colleagues$ = this.colleagueService.list();
+    console.log(this.colleagues$)
   }
 }
