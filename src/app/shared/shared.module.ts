@@ -8,6 +8,7 @@ import { VotingHistoryComponent } from '../shared/components/voting-history/voti
 import { Subject } from 'rxjs';
 import { Vote } from '../models/vote';
 import { ScoreHistoryPipe } from '../shared/pipes/score-history.pipe';
+import { CounterComponent } from '../shared/components/counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ScoreHistoryPipe } from '../shared/pipes/score-history.pipe';
     ScorePipe,
     VotingHistoryComponent,
     ScoreHistoryPipe,
+    CounterComponent,
   ],
   imports: [CommonModule],
   exports: [
@@ -24,6 +26,7 @@ import { ScoreHistoryPipe } from '../shared/pipes/score-history.pipe';
     ColleagueComponent,
     ColleagueListComponent,
     VotingHistoryComponent,
+    CounterComponent
   ],
 })
 export class SharedModule {
