@@ -21,4 +21,8 @@ export class WelcomePage {
      this.votingHistory?.push(vote)
     })
   }
+
+  fresh(){
+    alert('ah quel fraicheur');
+  }
 }
