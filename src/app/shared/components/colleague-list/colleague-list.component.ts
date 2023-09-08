@@ -15,6 +15,5 @@ export class ColleagueListComponent {
 
   ngOnInit() {
     this.colleagues$ = this.colleagueService.list();
-    console.log(this.colleagues$)
   }
 }
